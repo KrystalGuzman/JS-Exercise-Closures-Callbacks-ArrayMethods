@@ -159,8 +159,10 @@ function processContains(item,list,cb) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, cb) {
+  //var unique = list.filter(function(item, index) {
+  //  return list.indexOf(item) >= index;
+  //
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -202,9 +204,9 @@ let runnersNames = [];
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  // const allCaps = runners.map(({ first_name }) => first_name){
-    // return element.first_name.toUpperCase();
-  // });return allCaps;
+   const caps = runners.map(function(element){
+     return element.first_name.toUpperCase();
+   });return caps;
 }
 
 /**
@@ -221,9 +223,9 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-    const sizeShirt = runners.filter(tShirtSize => shirt_size.includes(tShirtSize.shirt_size));
-    return sizeShirt;
-}
+    return runners.filter(runner => runner.shirt_size === tShirtSize);
+ 
+  }
 
 /**
  * ### Challenge `tallyUpDonations`
@@ -235,8 +237,10 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const total = runners.reduce(function(a,b){return a + b.donation;
+  }, 0);
+  return total; 
 }
 
 /////////////// CLOSURES ///////////////
@@ -257,9 +261,9 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = -1;
+  return function counter() {
+    return ++count;
   }
   // BROKEN CODE ENDS
 }
@@ -284,8 +288,15 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxValue) {
+  let count = -1;
+
+  return function counter() {
+    if (count === maxValue){
+      return count = 0}
+      else {
+        return ++count }
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
