@@ -160,10 +160,11 @@ function processContains(item,list,cb) {
  * should return 3.
 */
 function processDuplicateFree(list, cb) {
-  //var unique = list.filter(function(item, index) {
-  //  return list.indexOf(item) >= index;
-  //
-}
+  var unique = list.filter(function(item, pos) { 
+    return list.indexOf(item) == pos;
+  });
+  return cb(unique);
+ }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
